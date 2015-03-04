@@ -8,7 +8,7 @@
     "require": {
         "php": ">=5.4",
         "yiisoft/yii2": "*",
-		"letyii/yii2-rbac-mongodb": "dev-master",
+		"letyii/yii2-rbac-mongodb": "dev-master"
     },
     "autoload": {
         "psr-4": {
