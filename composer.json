@@ -4,7 +4,7 @@
     "homepage": "https://github.com/letyii/yii2-mongo-nested-set",
     "keywords": ["yii2","nested-set", "mongo-nested-set", "mongo", "mongodb"],
     "license": "MIT",
-    "minimum-stability": "alpha",
+    "minimum-stability": "beta",
     "require": {
         "php": ">=5.4",
         "yiisoft/yii2": "*",
@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "letyii\\mongo-nested-set\\": ""
+            "letyii\\mongonestedset\\": ""
         }
     }
 }
