@@ -748,7 +748,7 @@ class NestedSetsBehavior extends Behavior {
             $keys = $this->buildTreeKeys($items);
         }
         
-        $list = Html::beginTag('ul', ['class' => $config['containerClass']]);
+        $list = Html::beginTag('ol', ['class' => $config['containerClass']]);
         foreach ($keys as $key => $row) {
             if (isset($config['actions']))
                 $actions = str_replace ('{_id}', $items[$key]['_id'], $config['actions']);
@@ -759,7 +759,7 @@ class NestedSetsBehavior extends Behavior {
                 $list .= Html::tag('li', $actions.'<div class="' . $config['labelClass'] . '">' . $items[$key]['name'] . '</div>', ['class' => $config['itemClass'], 'data-id' => $items[$key]['_id']]);
             }
         }
-        $list .= Html::endTag('ul');
+        $list .= Html::endTag('ol');
 
 //        if (strpos($list, Html::beginTag('li', ['class' => $config['itemClass'], 'data-id' => $items[$key]['_id']])) === false) {
 //            $list = '';
