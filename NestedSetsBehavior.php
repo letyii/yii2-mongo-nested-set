@@ -715,7 +715,7 @@ class NestedSetsBehavior extends Behavior {
      * @param type $config
      * @return string HTML
      */
-    public function buildTreeHtml($keys = [], $items = [], $config = []) {
+    public function buildTreeHtml($keys = [], $items = [], $config = [], $selected = []) {
         $configDefault = [
             'id' => 'nestable',
             'class' => 'dd',
@@ -750,11 +750,16 @@ class NestedSetsBehavior extends Behavior {
         
         $list = Html::beginTag('ol', ['class' => $config['containerClass']]);
         foreach ($keys as $key => $row) {
-            if (isset($config['actions']))
+            if (isset($config['actions'])) {
                 $actions = str_replace ('{_id}', $items[$key]['_id'], $config['actions']);
-            
+
+                if (is_array($selected) && in_array($items[$key]['_id'], $selected)) {
+                    $actions = str_replace ('{check}', 'checked', $actions);
+                }
+            }
+
             if (count($row)) {
-                $list .= Html::tag('li', $actions.'<div class="' . $config['labelClass'] . '">' . $items[$key]['name']  . '</div>' . $this->buildTreeHtml($row, $items, $config), ['class' => $config['itemClass'], 'data-id' => $items[$key]['_id']]);
+                $list .= Html::tag('li', $actions.'<div class="' . $config['labelClass'] . '">' . $items[$key]['name']  . '</div>' . $this->buildTreeHtml($row, $items, $config, $selected), ['class' => $config['itemClass'], 'data-id' => $items[$key]['_id']]);
             } else {
                 $list .= Html::tag('li', $actions.'<div class="' . $config['labelClass'] . '">' . $items[$key]['name'] . '</div>', ['class' => $config['itemClass'], 'data-id' => $items[$key]['_id']]);
             }
